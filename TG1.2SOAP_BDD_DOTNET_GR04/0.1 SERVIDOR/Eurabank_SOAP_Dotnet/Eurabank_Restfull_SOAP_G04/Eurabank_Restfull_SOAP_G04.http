@@ -1,0 +1,6 @@
+@Eurabank_Restfull_SOAP_G04_HostAddress = http://localhost:5199
+
+GET {{Eurabank_Restfull_SOAP_G04_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

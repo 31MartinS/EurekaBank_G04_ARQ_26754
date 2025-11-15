@@ -1,0 +1,98 @@
+﻿@model EurabankWebClient.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EURABANK</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 25px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn-ingresar {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        .btn-ingresar:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        .error-message {
+            color: #f44336;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Iniciar Sesión</h2>
+        
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label asp-for="Usuario" class="form-label">Usuario</label>
+                <input asp-for="Usuario" class="form-control" placeholder="Ingrese su usuario" />
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Contraseña" class="form-label">Contraseña</label>
+                <input asp-for="Contraseña" type="password" class="form-control" placeholder="Ingrese su contraseña" />
+            </div>
+            
+            <button type="submit" class="btn btn-ingresar">Ingresar</button>
+            
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="error-message">@Model.ErrorMessage</div>
+            }
+        </form>
+    </div>
+</body>
+</html>

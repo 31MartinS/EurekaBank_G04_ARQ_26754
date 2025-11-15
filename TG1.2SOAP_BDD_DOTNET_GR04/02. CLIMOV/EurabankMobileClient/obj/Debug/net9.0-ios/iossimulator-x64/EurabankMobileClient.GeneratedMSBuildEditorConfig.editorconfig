@@ -1,0 +1,86 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property.TargetFramework = net9.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = EurabankMobileClient
+build_property.ProjectDir = C:\src\Eurabank_Restfull_SOAP_G04\EurabankMobileClient\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/ClientesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.ClientesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ClientesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ClientesPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/DepositoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.DepositoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DepositoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DepositoPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/MovimientosPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.MovimientosPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MovimientosPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MovimientosPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/RetiroPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.RetiroPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RetiroPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RetiroPage.xaml
+
+[C:/src/Eurabank_Restfull_SOAP_G04/EurabankMobileClient/Views/TransferenciaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EurabankMobileClient.Views.TransferenciaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\TransferenciaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\TransferenciaPage.xaml

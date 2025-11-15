@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EurabankMobileClient.ViewModels"
+             x:Class="EurabankMobileClient.Views.ClientesPage"
+             x:DataType="vm:ClientesViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F5F5">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header unificado -->
+        <Frame Grid.Row="0" Padding="15,15,15,15" BackgroundColor="#667EEA" CornerRadius="0" HasShadow="True">
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                    <Label Text="EURABANK"
+                           FontSize="24" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Lista de Clientes"
+                           FontSize="14" TextColor="White" Opacity="0.9"/>
+                </VerticalStackLayout>
+                <Button Grid.Column="1" Text="Salir"
+                        Command="{Binding CerrarCommand}"
+                        BackgroundColor="#5a67d8" TextColor="White"
+                        CornerRadius="5" Padding="20,8"
+                        VerticalOptions="Center"/>
+            </Grid>
+        </Frame>
+
+        <!-- Lista de Clientes -->
+        <RefreshView Grid.Row="1"
+                     Command="{Binding CargarClientesCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Clientes}"
+                           SelectionMode="None"
+                           Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ClienteAgrupado">
+                        <Frame Padding="0" Margin="0,5"
+                               BackgroundColor="White"
+                               CornerRadius="10" HasShadow="True">
+                            
+                            <!-- Información del cliente -->
+                            <VerticalStackLayout Spacing="0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=SeleccionarOperacionCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+
+                                <Grid Padding="15" ColumnDefinitions="*,Auto">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                        <Label Text="{Binding Nombre}"
+                                               FontSize="18" FontAttributes="Bold"
+                                               TextColor="#333"/>
+                                        <Label Text="{Binding Codigo}"
+                                               FontSize="14" TextColor="#666"/>
+                                        <Label Text="{Binding CuentasTexto}"
+                                               FontSize="12" TextColor="#999"/>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label Text="{Binding SaldoTexto}"
+                                               FontSize="16" FontAttributes="Bold"
+                                               TextColor="#4CAF50"
+                                               HorizontalTextAlignment="End"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+
+                                <!-- Botones de acción -->
+                                <Grid Padding="10,0,10,10" ColumnDefinitions="*,*,*,*" ColumnSpacing="5">
+                                    <Button Grid.Column="0" Text="Depósito"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=IrADepositoCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#4CAF50" TextColor="White"
+                                            FontSize="12" CornerRadius="5" Padding="0" HeightRequest="35"/>
+                                    <Button Grid.Column="1" Text="Retiro"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=IrARetiroCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#F44336" TextColor="White"
+                                            FontSize="12" CornerRadius="5" Padding="0" HeightRequest="35"/>
+                                    <Button Grid.Column="2" Text="Transfer"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=IrATransferenciaCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#FF9800" TextColor="White"
+                                            FontSize="12" CornerRadius="5" Padding="0" HeightRequest="35"/>
+                                    <Button Grid.Column="3" Text="Movim."
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=IrAMovimientosCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#667EEA" TextColor="White"
+                                            FontSize="12" CornerRadius="5" Padding="0" HeightRequest="35"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" Padding="20">
+                        <Label Text="No hay clientes"
+                               FontSize="18" TextColor="#999"
+                               HorizontalOptions="Center"/>
+                        <Button Text="Cargar Clientes"
+                                Command="{Binding CargarClientesCommand}"
+                                BackgroundColor="#667EEA" TextColor="White"
+                                Margin="0,20,0,0"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,432 @@
+<Window x:Class="EurabankDesktopClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EURABANK - Sistema Bancario" 
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <!-- Converters -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        
+        <!-- Estilos para botones de acción -->
+        <Style x:Key="ButtonDepositoStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45A049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ButtonRetiroStyle" TargetType="Button" BasedOn="{StaticResource ButtonDepositoStyle}">
+            <Setter Property="Background" Value="#F44336"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#DA190B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ButtonTransferenciaStyle" TargetType="Button" BasedOn="{StaticResource ButtonDepositoStyle}">
+            <Setter Property="Background" Value="#FFC107"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFB300"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ButtonGrayStyle" TargetType="Button" BasedOn="{StaticResource ButtonDepositoStyle}">
+            <Setter Property="Background" Value="#6C757D"/>
+            <Setter Property="Padding" Value="30,12"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="45"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#5A6268"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#FF667EEA" Padding="20">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.1" ShadowDepth="2" BlurRadius="10"/>
+            </Border.Effect>
+            <Grid>
+                <TextBlock Text="EURABANK - Lista de Usuarios"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="1" Margin="20">
+            <!-- Vista: Lista de Clientes -->
+            <Grid Visibility="{Binding CurrentView, Converter={StaticResource ViewToVisibilityConverter}, ConverterParameter=Lista}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Mensajes -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                    <Border Background="#D4EDDA" BorderBrush="#C3E6CB" BorderThickness="1" 
+                            CornerRadius="5" Padding="12" Margin="0,0,0,10"
+                            Visibility="{Binding Mensaje, Converter={StaticResource StringToVisibilityConverter}}">
+                        <TextBlock Text="{Binding Mensaje}" Foreground="#155724" FontSize="14"/>
+                    </Border>
+                    <Border Background="#F8D7DA" BorderBrush="#F5C6CB" BorderThickness="1" 
+                            CornerRadius="5" Padding="12"
+                            Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}">
+                        <TextBlock Text="{Binding ErrorMessage}" Foreground="#721C24" FontSize="14"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- DataGrid de Clientes -->
+                <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Opacity="0.1" ShadowDepth="2" BlurRadius="10"/>
+                    </Border.Effect>
+                    
+                    <DataGrid ItemsSource="{Binding Clientes}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="None"
+                              HeadersVisibility="Column"
+                              SelectionMode="Single"
+                              CanUserResizeColumns="False"
+                              CanUserReorderColumns="False"
+                              CanUserSortColumns="False"
+                              Background="White"
+                              BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Usuario" Binding="{Binding NombreCompleto}" Width="2*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            
+                            <DataGridTextColumn Header="Saldo" Binding="{Binding SaldoFormateado}" Width="*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            
+                            <DataGridTemplateColumn Header="Acciones" Width="2*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="Depósito" 
+                                                    Style="{StaticResource ButtonDepositoStyle}"
+                                                    Command="{Binding DataContext.DepositoCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    CommandParameter="{Binding}"/>
+                                            <Button Content="Retiro" 
+                                                    Style="{StaticResource ButtonRetiroStyle}"
+                                                    Command="{Binding DataContext.RetiroCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    CommandParameter="{Binding}"/>
+                                            <Button Content="Transferencia" 
+                                                    Style="{StaticResource ButtonTransferenciaStyle}"
+                                                    Command="{Binding DataContext.TransferenciaCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    CommandParameter="{Binding}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+
+                <!-- Botones inferiores -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button Content="Ver Movimientos" 
+                            Style="{StaticResource ButtonGrayStyle}"
+                            Command="{Binding VerMovimientosCommand}"/>
+                    <Button Content="Actualizar" 
+                            Style="{StaticResource ButtonGrayStyle}"
+                            Margin="10,0,0,0"
+                            Command="{Binding ActualizarCommand}"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Vista: Depósito/Retiro -->
+            <Grid Visibility="{Binding CurrentView, Converter={StaticResource ViewToVisibilityConverter}, ConverterParameter=DepositoRetiro}">
+                <Border Background="White" 
+                        Width="450" Height="400"
+                        CornerRadius="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Opacity="0.2" ShadowDepth="5" BlurRadius="15"/>
+                    </Border.Effect>
+
+                    <StackPanel Margin="40">
+                        <TextBlock FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="Depósito"/>
+                                    <Setter Property="Foreground" Value="#4CAF50"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TipoOperacion}" Value="RETIRO">
+                                            <Setter Property="Text" Value="Retiro"/>
+                                            <Setter Property="Foreground" Value="#F44336"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding ClienteSeleccionado.NombreCompleto, StringFormat='Usuario: {0}'}"
+                                   FontSize="16"
+                                   Foreground="#666"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,30"/>
+
+                        <Border Background="#F8D7DA" BorderBrush="#F5C6CB" BorderThickness="1" 
+                                CornerRadius="10" Padding="12" Margin="0,0,0,20"
+                                Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}">
+                            <TextBlock Text="{Binding ErrorMessage}" Foreground="#721C24" TextAlignment="Center"/>
+                        </Border>
+
+                        <TextBlock Text="Ingrese el Monto:"
+                                   FontWeight="SemiBold"
+                                   FontSize="14"
+                                   Foreground="#555"
+                                   Margin="0,0,0,10"/>
+
+                        <Border BorderBrush="#DDD" BorderThickness="2" CornerRadius="25" Margin="0,0,0,30">
+                            <TextBox Text="{Binding Monto, UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="16"
+                                     Padding="15,12"
+                                     BorderThickness="0"/>
+                        </Border>
+
+                        <Button Content="Continuar"
+                                Background="#4CAF50"
+                                Foreground="White"
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Height="45"
+                                BorderThickness="0"
+                                Margin="0,0,0,10">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Command" Value="{Binding RealizarDepositoCommand}"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TipoOperacion}" Value="RETIRO">
+                                            <Setter Property="Command" Value="{Binding RealizarRetiroCommand}"/>
+                                        </DataTrigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#45A049"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Background" Value="#CCC"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Button Content="Volver"
+                                Command="{Binding VolverCommand}"
+                                Style="{StaticResource ButtonGrayStyle}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Vista: Transferencia -->
+            <Grid Visibility="{Binding CurrentView, Converter={StaticResource ViewToVisibilityConverter}, ConverterParameter=Transferencia}">
+                <Border Background="White" 
+                        Width="500" Height="500"
+                        CornerRadius="15"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Opacity="0.2" ShadowDepth="5" BlurRadius="15"/>
+                    </Border.Effect>
+
+                    <StackPanel Margin="40">
+                        <TextBlock Text="Transferencia"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="#FFC107"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,10"/>
+
+                        <TextBlock Text="{Binding ClienteSeleccionado.NombreCompleto, StringFormat='Desde: {0}'}"
+                                   FontSize="16"
+                                   Foreground="#666"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,30"/>
+
+                        <Border Background="#F8D7DA" BorderBrush="#F5C6CB" BorderThickness="1" 
+                                CornerRadius="10" Padding="12" Margin="0,0,0,20"
+                                Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}">
+                            <TextBlock Text="{Binding ErrorMessage}" Foreground="#721C24" TextAlignment="Center"/>
+                        </Border>
+
+                        <TextBlock Text="Usuario a Transferir:"
+                                   FontWeight="SemiBold"
+                                   FontSize="14"
+                                   Foreground="#555"
+                                   Margin="0,0,0,10"/>
+
+                        <Border BorderBrush="#DDD" BorderThickness="2" CornerRadius="25" Margin="0,0,0,25">
+                            <ComboBox ItemsSource="{Binding ClientesDisponibles}"
+                                      SelectedItem="{Binding ClienteDestino}"
+                                      DisplayMemberPath="NombreCompleto"
+                                      FontSize="14"
+                                      Padding="15,10"
+                                      BorderThickness="0"
+                                      Background="Transparent"/>
+                        </Border>
+
+                        <TextBlock Text="Ingrese el Monto:"
+                                   FontWeight="SemiBold"
+                                   FontSize="14"
+                                   Foreground="#555"
+                                   Margin="0,0,0,10"/>
+
+                        <Border BorderBrush="#DDD" BorderThickness="2" CornerRadius="25" Margin="0,0,0,30">
+                            <TextBox Text="{Binding Monto, UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="16"
+                                     Padding="15,12"
+                                     BorderThickness="0"/>
+                        </Border>
+
+                        <Button Content="Continuar"
+                                Command="{Binding RealizarTransferenciaCommand}"
+                                Background="#4CAF50"
+                                Foreground="White"
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Height="45"
+                                BorderThickness="0"
+                                Margin="0,0,0,10">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#45A049"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Background" Value="#CCC"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Button Content="Volver"
+                                Command="{Binding VolverCommand}"
+                                Style="{StaticResource ButtonGrayStyle}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Vista: Movimientos -->
+            <Grid Visibility="{Binding CurrentView, Converter={StaticResource ViewToVisibilityConverter}, ConverterParameter=Movimientos}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Background="White" CornerRadius="10" Padding="15">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Opacity="0.1" ShadowDepth="2" BlurRadius="10"/>
+                    </Border.Effect>
+
+                    <DataGrid ItemsSource="{Binding Movimientos}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="None"
+                              HeadersVisibility="Column"
+                              Background="White"
+                              BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding FechaFormateada}" Width="*"/>
+                            <DataGridTextColumn Header="Usuario" Binding="{Binding NombreCliente}" Width="*"/>
+                            <DataGridTextColumn Header="Tipo Movimiento" Binding="{Binding TipoMovimiento}" Width="*"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding MontoFormateado}" Width="*"/>
+                            <DataGridTextColumn Header="Saldo" Binding="{Binding SaldoFormateado}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+
+                <Button Grid.Row="1" Content="Volver"
+                        Command="{Binding VolverCommand}"
+                        Style="{StaticResource ButtonGrayStyle}"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0"/>
+            </Grid>
+
+            <!-- Loading Overlay -->
+            <Border Background="#80000000" 
+                    Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}"
+                    Grid.RowSpan="2">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ProgressBar IsIndeterminate="True" Width="200" Height="20"/>
+                    <TextBlock Text="Cargando..." Foreground="White" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
