@@ -1,0 +1,148 @@
+# 🚀 Guía Rápida - Ejecutar en Xiaomi
+
+## ⚡ Inicio Rápido (3 pasos)
+
+### 1. Configurar Firewall (SOLO UNA VEZ)
+```powershell
+# Abre PowerShell como ADMINISTRADOR y ejecuta:
+netsh advfirewall firewall add rule name="Eurabank API Port 5199" dir=in action=allow protocol=TCP localport=5199
+```
+
+### 2. Iniciar Servidor
+```powershell
+cd C:\src\Eurabank_Restfull_SOAP_G04\Eurabank_Restfull_SOAP_G04
+.\IniciarServidorXiaomi.ps1
+```
+
+### 3. Ejecutar en Visual Studio
+- Abre: `EurabankMobileClient.csproj`
+- Conecta tu Xiaomi con USB
+- Autoriza depuración USB en el teléfono
+- Selecciona "Xiaomi 23129RA5FL" en VS
+- Presiona **F5**
+
+---
+
+## 📋 Checklist Pre-Ejecución
+
+**En tu Xiaomi:**
+- [x] Opciones de desarrollador activadas (7 toques en Versión MIUI)
+- [x] Depuración USB activada
+- [x] Instalar vía USB activada
+- [x] Cable USB conectado
+- [x] Autorización USB permitida
+
+**En tu PC:**
+- [x] Firewall configurado (puerto 5199)
+- [x] Servidor REST API ejecutándose
+- [x] IP: 10.40.17.162 (verificar con `ipconfig`)
+- [x] Visual Studio 2022 abierto
+- [x] Proyecto EurabankMobileClient cargado
+
+---
+
+## 🔍 Verificación Rápida
+
+**¿El servidor está corriendo?**
+```powershell
+curl http://localhost:5199/api/cuentas
+```
+Debe devolver JSON con cuentas.
+
+**¿El Xiaomi está conectado?**
+```powershell
+adb devices
+```
+Debe mostrar tu dispositivo como "device".
+
+**¿La red está configurada?**
+```powershell
+ipconfig | findstr "10.40"
+```
+Debe mostrar: 10.40.17.162
+
+---
+
+## 🎯 Ejecutar
+
+### Desde Visual Studio (Recomendado)
+1. F5 o botón ▶ Start
+2. Espera instalación automática
+3. App se abre en tu Xiaomi
+4. Login: MONSTER / monster9
+
+### Desde Línea de Comandos
+```powershell
+cd C:\src\Eurabank_Restfull_SOAP_G04\EurabankMobileClient
+dotnet build -t:Run -f net9.0-android
+```
+
+---
+
+## 🐛 Solución Rápida de Problemas
+
+| Problema | Solución |
+|----------|----------|
+| Xiaomi no aparece en VS | `adb devices` → Revoca autorizaciones USB en teléfono → Reconecta |
+| Error de conexión | Verifica firewall y que ambos estén en misma WiFi |
+| App no se instala | Desinstala versión anterior del teléfono |
+| "INSTALL_FAILED_USER_RESTRICTED" | Activa "Instalar vía USB" en Opciones desarrollador |
+
+---
+
+## 📱 URLs Configuradas
+
+- **Servidor Local:** http://localhost:5199
+- **Servidor Red:** http://10.40.17.162:5199
+- **Xiaomi conecta a:** http://10.40.17.162:5199
+
+---
+
+## ⚙️ Configuración Actual
+
+```
+Dispositivo: Xiaomi 23129RA5FL
+Android:     15.0 (API 35)
+IP Server:   10.40.17.162
+Puerto:      5199
+Protocolo:   HTTP
+```
+
+---
+
+## 📞 Comandos Útiles
+
+**Ver dispositivos Android conectados:**
+```powershell
+adb devices
+```
+
+**Ver logs de la app en tiempo real:**
+```powershell
+adb logcat | findstr "EurabankMobileClient"
+```
+
+**Reinstalar app:**
+```powershell
+adb uninstall com.companyname.eurabankmobileclient
+dotnet build -t:Run -f net9.0-android
+```
+
+**Verificar IP actual:**
+```powershell
+ipconfig | findstr "IPv4"
+```
+
+**Probar servidor desde red:**
+```powershell
+curl http://10.40.17.162:5199/api/cuentas
+```
+
+---
+
+## 🎉 ¡Listo para Ejecutar!
+
+Todo está configurado para tu Xiaomi 23129RA5FL con Android 15.0.
+La IP 10.40.17.162 ya está establecida en el código.
+
+**¡Presiona F5 y disfruta! 📱**

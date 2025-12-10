@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EurabankMobileClient</name>
+    </assembly>
+    <members>
+        <member name="T:EurabankMobileClient.ViewModels.BaseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.BaseViewModel.isBusy"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.BaseViewModel.title"/>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.ClientesViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.Clientes">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.ClientesViewModel.clientes"/>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.cargarClientesCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.CargarClientesCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.CargarClientesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.CargarClientes"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.seleccionarOperacionCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.SeleccionarOperacionCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.SeleccionarOperacionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.SeleccionarOperacion(EurabankMobileClient.ViewModels.ClienteAgrupado)"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.irADepositoCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrADepositoCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrADepositoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.IrADeposito(EurabankMobileClient.ViewModels.ClienteAgrupado)"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.irARetiroCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrARetiroCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrARetiroCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.IrARetiro(EurabankMobileClient.ViewModels.ClienteAgrupado)"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.irATransferenciaCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrATransferenciaCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrATransferenciaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.IrATransferencia(EurabankMobileClient.ViewModels.ClienteAgrupado)"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.irAMovimientosCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrAMovimientosCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.IrAMovimientosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.IrAMovimientos(EurabankMobileClient.ViewModels.ClienteAgrupado)"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.ClientesViewModel.cerrarCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.ClientesViewModel.CerrarCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.ClientesViewModel.CerrarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.ClientesViewModel.Cerrar"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.DepositoViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.CodigoCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.DepositoViewModel.codigoCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.NombreCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.DepositoViewModel.nombreCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.CodigoCuenta">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.DepositoViewModel.codigoCuenta"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.SaldoActual">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.DepositoViewModel.saldoActual"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.MontoTexto">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.DepositoViewModel.montoTexto"/>
+        </member>
+        <member name="M:EurabankMobileClient.ViewModels.DepositoViewModel.OnCodigoClienteChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EurabankMobileClient.ViewModels.DepositoViewModel.CodigoCliente"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EurabankMobileClient.ViewModels.DepositoViewModel.CodigoCliente"/> is changed.</remarks>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.DepositoViewModel.realizarDepositoCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.DepositoViewModel.RealizarDepositoCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.RealizarDepositoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.DepositoViewModel.RealizarDeposito"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.DepositoViewModel.cancelarCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.DepositoViewModel.CancelarCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.DepositoViewModel.CancelarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.DepositoViewModel.Cancelar"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.LoginViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.LoginViewModel.Usuario">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.LoginViewModel.usuario"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.LoginViewModel.Password">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.LoginViewModel.password"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.LoginViewModel.ErrorMessage">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.LoginViewModel.errorMessage"/>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.LoginViewModel.loginCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.LoginViewModel.LoginCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.LoginViewModel.LoginCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.LoginViewModel.Login"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.MovimientosViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.CodigoCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.MovimientosViewModel.codigoCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.NombreCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.MovimientosViewModel.nombreCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.CodigoCuenta">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.MovimientosViewModel.codigoCuenta"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.SaldoActual">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.MovimientosViewModel.saldoActual"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.Movimientos">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.MovimientosViewModel.movimientos"/>
+        </member>
+        <member name="M:EurabankMobileClient.ViewModels.MovimientosViewModel.OnCodigoClienteChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EurabankMobileClient.ViewModels.MovimientosViewModel.CodigoCliente"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EurabankMobileClient.ViewModels.MovimientosViewModel.CodigoCliente"/> is changed.</remarks>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.MovimientosViewModel.actualizarCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.MovimientosViewModel.ActualizarCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.ActualizarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.MovimientosViewModel.Actualizar"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.MovimientosViewModel.volverCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.MovimientosViewModel.VolverCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.MovimientosViewModel.VolverCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.MovimientosViewModel.Volver"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.RetiroViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.CodigoCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.RetiroViewModel.codigoCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.NombreCliente">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.RetiroViewModel.nombreCliente"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.CodigoCuenta">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.RetiroViewModel.codigoCuenta"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.SaldoActual">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.RetiroViewModel.saldoActual"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.MontoTexto">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.RetiroViewModel.montoTexto"/>
+        </member>
+        <member name="M:EurabankMobileClient.ViewModels.RetiroViewModel.OnCodigoClienteChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EurabankMobileClient.ViewModels.RetiroViewModel.CodigoCliente"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EurabankMobileClient.ViewModels.RetiroViewModel.CodigoCliente"/> is changed.</remarks>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.RetiroViewModel.realizarRetiroCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.RetiroViewModel.RealizarRetiroCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.RealizarRetiroCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.RetiroViewModel.RealizarRetiro"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.RetiroViewModel.cancelarCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.RetiroViewModel.CancelarCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.RetiroViewModel.CancelarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.RetiroViewModel.Cancelar"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.ViewModels.TransferenciaViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CodigoOrigen">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.codigoOrigen"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.NombreOrigen">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.nombreOrigen"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CodigoCuentaOrigen">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.codigoCuentaOrigen"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.SaldoDisponible">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.saldoDisponible"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.ClientesDestino">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.clientesDestino"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.ClienteSeleccionado">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.clienteSeleccionado"/>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.MontoTexto">
+            <inheritdoc cref="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.montoTexto"/>
+        </member>
+        <member name="M:EurabankMobileClient.ViewModels.TransferenciaViewModel.OnCodigoOrigenChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CodigoOrigen"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CodigoOrigen"/> is changed.</remarks>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.realizarTransferenciaCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.RealizarTransferenciaCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.RealizarTransferenciaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.TransferenciaViewModel.RealizarTransferencia"/>.</summary>
+        </member>
+        <member name="F:EurabankMobileClient.ViewModels.TransferenciaViewModel.cancelarCommand">
+            <summary>The backing field for <see cref="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CancelarCommand"/>.</summary>
+        </member>
+        <member name="P:EurabankMobileClient.ViewModels.TransferenciaViewModel.CancelarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EurabankMobileClient.ViewModels.TransferenciaViewModel.Cancelar"/>.</summary>
+        </member>
+        <member name="T:EurabankMobileClient.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Clientes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Clientes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CodigoCliente">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CodigoCliente" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreCliente">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreCliente" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CodigoCuenta">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CodigoCuenta" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SaldoActual">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SaldoActual" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MontoTexto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MontoTexto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Usuario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Usuario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Movimientos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Movimientos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CodigoOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CodigoOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CodigoCuentaOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CodigoCuentaOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SaldoDisponible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SaldoDisponible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ClientesDestino">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ClientesDestino" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ClienteSeleccionado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ClienteSeleccionado" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Clientes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Clientes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CodigoCliente">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CodigoCliente" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreCliente">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreCliente" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CodigoCuenta">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CodigoCuenta" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SaldoActual">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SaldoActual" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MontoTexto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MontoTexto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Usuario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Usuario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Movimientos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Movimientos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CodigoOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CodigoOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CodigoCuentaOrigen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CodigoCuentaOrigen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SaldoDisponible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SaldoDisponible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ClientesDestino">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ClientesDestino" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ClienteSeleccionado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ClienteSeleccionado" generated properties.</summary>
+        </member>
+    </members>
+</doc>

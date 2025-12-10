@@ -1,0 +1,240 @@
+@model EurabankWebClient.Models.ListadoMovimientosViewModel
+@{
+    ViewData["Title"] = "Listado de Movimientos";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EURABANK</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            text-align: center;
+            margin: 0;
+            font-weight: bold;
+        }
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .filter-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .table thead th {
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #333;
+        }
+        .badge-deposito {
+            background: #4CAF50;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .badge-retiro {
+            background: #f44336;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .badge-transferencia {
+            background: #FFC107;
+            color: #333;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .btn-volver {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-volver:hover {
+            background: #5a6268;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .btn-logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .filter-label {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .filter-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .btn-filter {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .btn-filter:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container-custom">
+            <h1>EURABANK - Listado de Movimientos</h1>
+            <a href="@Url.Action("Logout", "Auth")" class="btn btn-logout">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <div class="container-custom">
+        <div class="filter-container">
+            <form method="get" asp-action="Movimientos" asp-controller="Banco">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label class="filter-label">Usuario (opcional):</label>
+                        <select class="filter-input" name="codigoCliente">
+                            <option value="">Todos los usuarios</option>
+                            @if (Model.ClientesDisponibles != null)
+                            {
+                                @foreach (var cliente in Model.ClientesDisponibles)
+                                {
+                                    <option value="@cliente.Codigo" selected="@(cliente.Codigo == Model.CodigoClienteFiltro)">
+                                        @cliente.Nombre @cliente.Apellido
+                                    </option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn-filter">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Tipo Movimiento</th>
+                        <th>Monto</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Movimientos == null || !Model.Movimientos.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">No hay movimientos para mostrar</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var mov in Model.Movimientos)
+                        {
+                            <tr>
+                                <td>@mov.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td><strong>@mov.NombreCliente</strong></td>
+                                <td>
+                                    @if (mov.TipoMovimiento.ToUpper().Contains("DEPOSITO") || mov.TipoMovimiento.ToUpper().Contains("DEPÓSITO"))
+                                    {
+                                        <span class="badge-deposito">@mov.TipoMovimiento</span>
+                                    }
+                                    else if (mov.TipoMovimiento.ToUpper().Contains("RETIRO"))
+                                    {
+                                        <span class="badge-retiro">@mov.TipoMovimiento</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge-transferencia">@mov.TipoMovimiento</span>
+                                    }
+                                </td>
+                                <td><strong>$@mov.Monto.ToString("N2")</strong></td>
+                                <td><strong>$@mov.Saldo.ToString("N2")</strong></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center">
+            <a href="@Url.Action("Index", "Banco")" class="btn-volver">Volver</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

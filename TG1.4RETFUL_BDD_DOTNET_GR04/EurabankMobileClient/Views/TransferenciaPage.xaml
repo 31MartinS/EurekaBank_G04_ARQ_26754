@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EurabankMobileClient.ViewModels"
+             x:Class="EurabankMobileClient.Views.TransferenciaPage"
+             x:DataType="vm:TransferenciaViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Información Cliente Origen -->
+            <Frame Padding="15" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="DESDE" FontSize="12" TextColor="#999"/>
+                    <Label Text="{Binding NombreOrigen}" 
+                           FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                    <Label Text="{Binding SaldoDisponible, StringFormat='Saldo: {0:C}'}" 
+                           FontSize="16" TextColor="#4CAF50"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Selección Cliente Destino -->
+            <Frame Padding="15" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="PARA" FontSize="12" TextColor="#999"/>
+                    <Picker ItemsSource="{Binding ClientesDestino}"
+                            SelectedItem="{Binding ClienteSeleccionado}"
+                            ItemDisplayBinding="{Binding Nombre}"
+                            Title="Seleccione cliente destino"
+                            FontSize="16"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Formulario de Transferencia -->
+            <Frame Padding="20" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="MONTO A TRANSFERIR" 
+                           FontSize="14" FontAttributes="Bold" TextColor="#333"/>
+                    
+                    <Entry Text="{Binding MontoTexto}" 
+                           Placeholder="0.00" 
+                           PlaceholderColor="#BBB"
+                           Keyboard="Numeric"
+                           FontSize="32"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#2196F3"
+                           BackgroundColor="#F5F5F5"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,20,0,0">
+                        <Button Grid.Column="0" 
+                                Text="Cancelar"
+                                Command="{Binding CancelarCommand}"
+                                BackgroundColor="#9E9E9E"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="8"
+                                HeightRequest="50"/>
+                        
+                        <Button Grid.Column="1" 
+                                Text="Transferir"
+                                Command="{Binding RealizarTransferenciaCommand}"
+                                BackgroundColor="#2196F3"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="8"
+                                HeightRequest="50"
+                                IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"/>
+                    </Grid>
+
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                                     IsVisible="{Binding IsBusy}"
+                                     Color="#2196F3"
+                                     HorizontalOptions="Center"
+                                     Margin="0,10,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
