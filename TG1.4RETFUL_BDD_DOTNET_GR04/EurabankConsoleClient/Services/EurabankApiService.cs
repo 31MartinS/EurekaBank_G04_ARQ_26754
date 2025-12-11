@@ -13,7 +13,7 @@ namespace EurabankConsoleClient.Services
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("http://localhost:5199")
+                BaseAddress = new Uri("http://10.40.26.248:5199")
             };
 
             _jsonOptions = new JsonSerializerOptions

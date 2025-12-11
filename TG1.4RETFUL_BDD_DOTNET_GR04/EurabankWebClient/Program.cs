@@ -17,7 +17,7 @@ builder.Services.AddSession(options =>
 // Configurar HttpClient para la API
 builder.Services.AddHttpClient<EurabankApiService>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5199"); // URL del servidor REST
+    client.BaseAddress = new Uri("http://10.40.26.248:5199"); // URL del servidor REST
     client.Timeout = TimeSpan.FromSeconds(30);
 });
 

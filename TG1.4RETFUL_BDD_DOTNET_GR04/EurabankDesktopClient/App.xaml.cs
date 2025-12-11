@@ -23,7 +23,7 @@ namespace EurabankDesktopClient
             // Configurar HttpClient
             services.AddHttpClient<EurabankApiService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:5199");
+                client.BaseAddress = new Uri("http://10.40.26.248:5199");
                 client.Timeout = TimeSpan.FromSeconds(30);
             });
 

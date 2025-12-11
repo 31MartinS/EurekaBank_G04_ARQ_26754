@@ -61,7 +61,7 @@ namespace EurabankMobileClient.ViewModels
             catch (HttpRequestException httpEx)
             {
                 System.Diagnostics.Debug.WriteLine($"HttpRequestException: {httpEx}");
-                ErrorMessage = $"No se puede conectar al servidor.\nVerifique:\n- Servidor corriendo en 192.168.100.2:5199\n- Mismo WiFi\n- Firewall";
+                ErrorMessage = $"No se puede conectar al servidor.\nVerifique:\n- Servidor corriendo en 10.40.26.248:5199\n- Mismo WiFi\n- Firewall";
             }
             catch (TaskCanceledException)
             {

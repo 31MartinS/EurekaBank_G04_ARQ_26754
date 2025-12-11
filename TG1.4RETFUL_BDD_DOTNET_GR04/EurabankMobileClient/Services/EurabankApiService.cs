@@ -17,7 +17,7 @@ namespace EurabankMobileClient.Services
             _httpClient = new HttpClient(handler)
             {
                 // IP para Android Físico (Tu IP actual) vs Windows/Desktop (localhost)
-                BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android ? "http://192.168.100.2:5199" : "http://localhost:5199"),
+                BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android ? "http://10.40.26.248:5199" : "http://localhost:5199"),
                 Timeout = TimeSpan.FromSeconds(30)
             };
 
